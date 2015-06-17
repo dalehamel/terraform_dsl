@@ -15,14 +15,15 @@ module Cloudshaper
         module_path = File.join(Stacks.dir, parent_module.id, mod.name)
         FileUtils.mkdir_p(module_path)
         @fields[:source] = File.expand_path(module_path)
+        @fields[:cloudshaper_stack_id] = var(:cloudshaper_stack_id)
 
         file_path = File.join(module_path, 'stack_module.tf.json')
-        build_submodule(file_path, parent_module, mod)
+        build_submodule(file_path, mod)
       end
     end
 
-    def build_submodule(file_path, parent_module, child_module)
-      child_module.build(cloudshaper_stack_id: parent_module.id)
+    def build_submodule(file_path, child_module)
+      child_module.build
       File.open(file_path, 'w') { |f| f.write(child_module.generate) }
     end
   end

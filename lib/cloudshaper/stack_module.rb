@@ -37,7 +37,7 @@ module Cloudshaper
       @stack_elements = { resource: {}, provider: {}, variable: {}, output: {}, module: {} }
       @secrets = {}
       @block = block
-      variable(:cloudshaper_stack_id) { default '' }
+      variable(:cloudshaper_stack_id) {}
     end
 
     def clone
