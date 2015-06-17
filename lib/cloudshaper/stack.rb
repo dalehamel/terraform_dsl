@@ -29,6 +29,8 @@ module Cloudshaper
       @stack_dir = File.join(Stacks.dir, @stack_id)
 
       @module = StackModules.get(config.fetch('root'))
+      @module.build(cloudshaper_stack_id: @stack_id)
+
       @variables = config['variables'] || {}
       @variables['cloudshaper_stack_id'] = @stack_id
     end
