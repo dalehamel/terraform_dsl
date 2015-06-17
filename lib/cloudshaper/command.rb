@@ -13,7 +13,7 @@ module Cloudshaper
 
     def env
       vars = {}
-      @stack.variables { |k, v| vars["TF_VAR_#{k}"] = v[:default] }
+      @stack.variables.each { |k, v| vars["TF_VAR_#{k}"] = v.to_s }
       SECRETS.each do |_provider, secrets|
         secrets.each do |k, v|
           vars[k.to_s] = v
