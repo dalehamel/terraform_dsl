@@ -18,8 +18,9 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency 'rake', '~> 10.4'
+  spec.add_runtime_dependency 'thor', '~> 0.19.1'
 
   spec.add_development_dependency 'bundler'
+  spec.add_development_dependency 'rake', '~> 10.4'
   spec.add_development_dependency 'minitest', '~> 5.6'
 end
